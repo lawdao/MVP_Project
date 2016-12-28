@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/tab_menu_view"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/tab_menu_subject"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tab_menu_subject_tv"
+                style="@style/tab_menu_text"
+                android:drawableTop="@drawable/selector_tab_menu_subject"
+                android:duplicateParentState="true"
+                android:text="课表" />
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/tab_menu_model"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tab_menu_model_tv"
+                style="@style/tab_menu_text"
+                android:drawableTop="@drawable/selector_tab_menu_model"
+                android:duplicateParentState="true"
+                android:text="课程" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/tab_menu_me"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tab_menu_me_tv"
+                style="@style/tab_menu_text"
+                android:drawableTop="@drawable/selector_tab_menu_me"
+                android:duplicateParentState="true"
+                android:text="我" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+    <View
+        android:id="@+id/div_tab_line"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_above="@+id/tab_menu_view"
+        android:background="@color/divider_color" />
+
+    <FrameLayout
+        android:id="@+id/fl_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/div_tab_line" />
+</RelativeLayout>

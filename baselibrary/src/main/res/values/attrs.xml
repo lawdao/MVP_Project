@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <declare-styleable name="WeekView">
+        <attr name="firstDayOfWeek" format="enum">
+            <enum name="sunday" value="1" />
+            <enum name="monday" value="2" />
+            <enum name="tuesday" value="3" />
+            <enum name="wednesday" value="4" />
+            <enum name="thursday" value="5" />
+            <enum name="friday" value="6" />
+            <enum name="saturday" value="7" />
+        </attr>
+        <attr name="hourHeight" format="dimension" />
+        <attr name="minHourHeight" format="dimension" />
+        <attr name="maxHourHeight" format="dimension" />
+        <!--时间(小时)字体大小-->
+        <attr name="textSize" format="dimension" />
+        <attr name="eventTextSize" format="dimension" />
+        <attr name="headerColumnPadding" format="dimension" />
+        <attr name="headerRowPadding" format="dimension" />
+        <attr name="columnGap" format="dimension" />
+        <attr name="headerColumnTextColor" format="color" />
+        <attr name="noOfVisibleDays" format="integer" />
+        <attr name="showFirstDayOfWeekFirst" format="boolean" />
+        <attr name="headerRowBackgroundColor" format="color" />
+        <!--normal 背景-->
+        <attr name="dayBackgroundColor" format="color" />
+        <!--行间隔的颜色-->
+        <attr name="hourSeparatorColor" format="color" />
+        <attr name="todayBackgroundColor" format="color" />
+        <attr name="todayHeaderTextColor" format="color" />
+        <!--时间线的宽度-->
+        <attr name="hourSeparatorHeight" format="dimension" />
+        <attr name="eventTextColor" format="color" />
+        <attr name="eventPadding" format="dimension" />
+        <attr name="headerColumnBackground" format="color" />
+        <attr name="dayNameLength" format="enum">
+            <enum name="length_short" value="1" />
+            <enum name="length_long" value="2" />
+        </attr>
+        <attr name="overlappingEventGap" format="dimension" />
+        <attr name="eventMarginVertical" format="dimension" />
+        <attr name="xScrollingSpeed" format="float" />
+        <attr name="eventCornerRadius" format="dimension" />
+        <attr name="showDistinctPastFutureColor" format="boolean" />
+        <attr name="showDistinctWeekendColor" format="boolean" />
+        <attr name="futureBackgroundColor" format="color" />
+        <attr name="pastBackgroundColor" format="color" />
+        <attr name="futureWeekendBackgroundColor" format="color" />
+        <attr name="pastWeekendBackgroundColor" format="color" />
+        <attr name="showNowLine" format="boolean" />
+        <attr name="nowLineColor" format="color" />
+        <!--当前时间线的宽度-->
+        <attr name="nowLineThickness" format="dimension" />
+        <attr name="horizontalFlingEnabled" format="boolean" />
+        <attr name="verticalFlingEnabled" format="boolean" />
+        <attr name="allDayEventHeight" format="dimension" />
+        <attr name="scrollDuration" format="integer" />
+
+        <!--星期与日期之间的间距-->
+        <attr name="headerCowGap" format="dimension" />
+
+        <!--星期字体大小-->
+        <attr name="weekLableTextSize" format="dimension" />
+        <!--时间字体大小-->
+        <attr name="timeTextSize" format="dimension" />
+        <!--今天日期圆形背景颜色-->
+        <attr name="toadyCircleColor" format="color" />
+        <!--今天星期的字体颜色-->
+        <attr name="todayWeekLableTextColor" format="color" />
+        <!--月份颜色-->
+        <attr name="monthTextColor" format="color" />
+        <!--月份字体大小-->
+        <attr name="monthTextSize" format="dimension" />
+
+    </declare-styleable>
+
+
+    <declare-styleable name="CircleImageView">
+        <attr name="civ_border_width" format="dimension" />
+        <attr name="civ_border_color" format="color" />
+        <attr name="civ_border_overlay" format="boolean" />
+        <attr name="civ_fill_color" format="color" />
+    </declare-styleable>
+
+</resources>

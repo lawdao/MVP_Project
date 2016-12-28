@@ -1,0 +1,10 @@
+<resources>
+
+    <!--    <style name="BaseAppTheme.NoTrans">
+            <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+            <item name="android:statusBarColor">@android:color/transparent</item>
+            &lt;!&ndash;<item name="android:windowTranslucentStatus">true</item>&ndash;&gt;
+            &lt;!&ndash;<item name="android:windowBackground">@android:color/transparent</item>&ndash;&gt;
+            &lt;!&ndash;<item name="android:windowIsTranslucent">true</item>&ndash;&gt;
+        </style>-->
+</resources>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/view_base_title" />
+
+    <LinearLayout
+        android:id="@+id/view_login_phone"
+        android:layout_width="fill_parent"
+        android:layout_height="46dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="18dp"
+        android:layout_marginTop="130dp"
+        android:background="@drawable/bg_edit_bg_normal"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <example.fussen.baselibrary.widget.DeleteEditText
+            android:id="@+id/edit_login_phone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/ic_img_login_edit_bg"
+            android:drawableRight="@drawable/ic_edit_input_clear"
+            android:ems="10"
+            android:hint="请输入您的手机号码"
+            android:inputType="number"
+            android:maxLength="14"
+            android:paddingLeft="18dp"
+            android:paddingRight="10dp"
+            android:textColor="@color/input_text_color"
+            android:textColorHint="@color/input_hint_color"
+            android:textCursorDrawable="@drawable/color_cursor"
+            android:textSize="15sp"></example.fussen.baselibrary.widget.DeleteEditText>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/view_login_password"
+        android:layout_width="fill_parent"
+        android:layout_height="46dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="18dp"
+        android:layout_marginTop="3dp"
+        android:background="@drawable/bg_edit_bg_normal"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+
+        <example.fussen.baselibrary.widget.DeleteEditText
+            android:id="@+id/edit_login_password"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/ic_img_login_edit_bg"
+            android:drawableRight="@drawable/ic_edit_input_clear"
+            android:ems="10"
+            android:hint="请输入您的密码"
+            android:inputType="textPassword"
+            android:maxLength="15"
+            android:paddingLeft="18dp"
+            android:paddingRight="10dp"
+            android:textColor="@color/input_text_color"
+            android:textColorHint="@color/input_hint_color"
+            android:textCursorDrawable="@drawable/color_cursor"
+            android:textSize="15sp"></example.fussen.baselibrary.widget.DeleteEditText>
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btn_login"
+        style="@style/LoginBottonStyle"
+        android:text="登录" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/tv_register_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="注册"
+            android:textColor="@color/rgb_color_02"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_forgot_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:padding="10dp"
+            android:text="忘记密码 ? "
+            android:textColor="@color/rgb_color_08"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+
+</LinearLayout>

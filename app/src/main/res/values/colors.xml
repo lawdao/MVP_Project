@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#464a4d</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="red">#FF3B30</color>
+    <color name="app_color">#1dafeb</color>
+
+    <color name="transparent">#00000000</color>
+
+
+    <!--transparent-->
+    <color name="container_background">#EBEBEB</color>
+    <color name="item_background">#FAFAFA</color>
+    <!--87%white-->
+    <color name="primary_text">#de000000</color>
+
+    <!--页面标题颜色-->
+    <color name="base_title_color">#464a4d</color>
+
+    <!--所有页面背景色-->
+    <color name="all_bg_color">#f0f0f0</color>
+
+    <color name="img_preesed_color">#4d5255</color>
+
+
+
+    <!-- 通用item颜色 -->
+    <color name="item_white_background_press">#d3d3d3</color>
+    <color name="btn_white_normal_color">#333333</color>
+
+
+    <color name="gray">#ff666666</color>
+    <!--字体颜色-->
+    <color name="text_color">#333333</color>
+
+    <color name="btn_text_pressed_color">#77FFFFFF</color>
+
+    <!--========================输入框========================-->
+
+    <!--所有输入框内字体的颜色-->
+    <color name="input_text_color">#333333</color>
+
+    <!--输入框hint字体的颜色-->
+    <color name="input_hint_color">#B4B4B4</color>
+
+    <!--输入框光标的颜色-->
+    <color name="input_cursor_color">#1dafeb</color>
+
+
+
+    <color name="rgb_color_01">#333333</color>
+    <color name="rgb_color_02">#666666</color>
+    <color name="rgb_color_03">#B4B4B4</color>
+    <color name="rgb_color_04">#000000</color>
+
+    <color name="rgb_color_05">#FFFFFF</color>
+    <color name="rgb_color_06">#FFFFFF</color>
+    <color name="rgb_color_07">#FFFFFF</color>
+    <color name="rgb_color_08">#1dafeb</color>
+    <color name="rgb_color_09">#464a4d</color>
+    <color name="rgb_color_10">#dfdfdf</color>
+    <color name="rgb_color_11">#F00000</color>
+
+
+    <color name="divider_color">#d3d3d3</color>
+
+</resources>

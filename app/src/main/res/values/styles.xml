@@ -1,0 +1,77 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!-- Base application theme. -->
+    <style name="BaseAppTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
+        <!--屏幕方向（纵向）-->
+        <item name="android:screenOrientation">portrait</item>
+        <!--状态栏4.4-->
+        <item name="android:windowTranslucentStatus" tools:targetApi="kitkat">false</item>
+    </style>
+
+    <style name="BaseAppTheme.NoTrans"></style>
+
+    <style name="BaseAppTheme.Trans">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+    <style name="SplashTheme" parent="BaseAppTheme">
+        <item name="android:windowBackground">@drawable/splash_backgroud</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="LoginTheme" parent="BaseAppTheme">
+        <item name="android:windowBackground">@drawable/ic_login_bg</item>
+        <item name="android:windowFullscreen">false</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
+    <!-- ToolBar菜单样式 -->
+    <style name="ToolbarTheme" parent="@style/ThemeOverlay.AppCompat.ActionBar">
+        <item name="actionMenuTextColor">@color/white</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+
+    <style name="LoginBottonStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">18dp</item>
+        <item name="android:layout_marginRight">18dp</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:background">@drawable/selector_btn_blue</item>
+        <item name="android:textColor">@drawable/selector_blue_btn_text_color</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+
+    <style name="tab_menu_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:textColor">#333333</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+
+</resources>
