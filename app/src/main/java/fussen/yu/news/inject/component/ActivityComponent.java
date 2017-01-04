@@ -7,8 +7,8 @@ import dagger.Component;
 import fussen.yu.news.inject.module.ActivityModule;
 import fussen.yu.news.inject.scope.ContextLife;
 import fussen.yu.news.inject.scope.ForActivity;
-import fussen.yu.news.login.activity.HomeActivity;
-import fussen.yu.news.login.activity.LoginActivity;
+import fussen.yu.news.modules.login.activity.HomeActivity;
+import fussen.yu.news.modules.login.activity.LoginActivity;
 
 /**
 /**

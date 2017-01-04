@@ -35,7 +35,7 @@ public class DaoAutoGenerator {
         // entity.setTableName("NODE");
 
         // 定义一个主键
-        user.addIdProperty().primaryKey();
+        user.addIdProperty().primaryKey().unique();
 
         // greenDAO 会自动根据实体类的属性值来创建表字段，并赋予默认值
         // 接下来你便可以设置表中的字段：
@@ -43,7 +43,7 @@ public class DaoAutoGenerator {
         // For example, a property called “creationDate” will become a database column “CREATION_DATE”.
 
         // 定义一个非空的列，列名为 USERID 用户ID
-        user.addStringProperty("userId").notNull().unique();//指定的列中没有重复值，或该表中每一个值或者每一组值都将是唯一的
+//        user.addStringProperty("userId").notNull().unique();//指定的列中没有重复值，或该表中每一个值或者每一组值都将是唯一的
         user.addStringProperty("nickName").notNull();
         user.addStringProperty("avatarUrl").notNull();
         user.addStringProperty("mobile").notNull();

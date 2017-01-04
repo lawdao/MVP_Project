@@ -45,9 +45,5 @@ public class FileConfig {
     public static final String VIDEO_DATA_PATH = COACH_PATH + "/data/video";
     public static final String ANALYSIS_DATA_PATH = COACH_PATH + "/data/trainingAnalysis";
 
-    //分析报告存储位置
-    public static final String REPORT_DATA_SAVE_PATH = COACH_PATH + "/data/report";
 
-    public static final String UNIT_TIME_MS = "6";  //秒
-    public static final String VIDEO_IMAGE = "/stuff?do=ImageUpload";
 }

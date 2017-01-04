@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <style name="globalDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <!-- 边框 -->
+        <item name="android:windowIsFloating">true</item>
+        <!-- 是否浮现在activity之上 -->
+        <item name="android:windowIsTranslucent">false</item>
+        <!-- 半透明 -->
+        <item name="android:windowNoTitle">true</item>
+        <!-- 无标题 -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+
+    <!-- 垂直分割线 -->
+    <style name="divider_vertical">
+        <item name="android:layout_width">1px</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:background">@color/color_line</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <!-- 水平分割线 -->
+    <style name="divider_horizontal">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">1px</item>
+        <item name="android:background">@color/divider_color_c8</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+
+    <!-- 时间选择器popwidnow 显示消失动画 -->
+    <style name="timepopwindow_anim_style">
+        <item name="android:windowEnterAnimation">@anim/timepicker_anim_enter_bottom
+        </item> <!-- 指定显示的动画xml -->
+        <item name="android:windowExitAnimation">@anim/timepicker_anim_exit_bottom
+        </item> <!-- 指定消失的动画xml -->
+    </style>
+
+
+
+</resources>

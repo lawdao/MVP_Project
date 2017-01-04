@@ -18,13 +18,13 @@ import android.widget.TextView;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import example.fussen.baselibrary.base.presenter.PresenterLife;
+import fussen.yu.news.base.presenter.PresenterLife;
 import fussen.yu.news.App;
 import fussen.yu.news.R;
 import fussen.yu.news.inject.component.ActivityComponent;
 import fussen.yu.news.inject.component.DaggerActivityComponent;
 import fussen.yu.news.inject.module.ActivityModule;
-import fussen.yu.news.login.activity.LoginActivity;
+import fussen.yu.news.modules.login.activity.LoginActivity;
 import fussen.yu.news.utils.ToastUtil;
 
 /**

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#00000000"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginRight="0.5dp"
+            android:background="@drawable/menudialog_bottom_selector"
+            android:clickable="true"
+            android:gravity="center"
+            android:padding="15dp"
+            android:text="标题"
+            android:textColor="@color/dialog_title"
+            android:textSize="13sp" />
+
+        <TextView style="@style/divider_horizontal" />
+
+        <LinearLayout
+            android:id="@+id/dialogLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"></LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="@color/dialog_line_bg" />
+
+        <TextView
+            android:id="@+id/ok"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:background="@drawable/menudialog_bottom_selector"
+            android:clickable="true"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="取消"
+            android:textColor="@color/dialogBlue"
+            android:textSize="16sp" />
+
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="372dp"
+        android:layout_marginTop="153dp"
+        android:indeterminate="false"
+        android:visibility="gone" />
+
+</RelativeLayout>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <color name="white">#FFFFFF</color>
+    <color name="transparent">#00000000</color>
+
+    <color name="color_line">#dcdcdc</color>
+
+    <color name="dialog_btn_pressed_color">#66d3d3d3</color>
+    <color name="base_dialog_button_press">#ffffff</color>
+
+    <color name="all_btn_pressed_color">#55FFFFFF</color>
+    <color name="all_btn_normal_color">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="rest_color">#999999</color>
+    <color name="no_class_color">#f40c0a</color>
+    <color name="dialog_title">#8F8F8F</color>
+
+    <!--dialog按钮按下的颜色-->
+    <color name="dialogColor">#f0f0f0</color>
+    <color name="dialogTxtColor">#0048fc</color>
+    <color name="dialogBlue">#037BFF</color>
+
+
+
+    <color name="divider_color_c8">#d3d3d3</color>
+    <color name="divider_color_dc">#e1e1e1</color>
+
+    <color name="dialog_line_bg">#EDEDEF</color>
+    <color name="material_text_color_47">#333333</color>
+
+</resources>

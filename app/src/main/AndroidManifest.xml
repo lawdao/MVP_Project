@@ -4,13 +4,14 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <!--允许读取网络状态-->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <!--允许读取wifi网络状态-->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
+    <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.PERSISTENT_ACTIVITY"/>
 
     <application
@@ -21,7 +22,7 @@
         android:supportsRtl="true"
         android:theme="@style/BaseAppTheme">
         <activity
-            android:name=".login.activity.SplashActivity"
+            android:name=".modules.login.activity.SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,9 +31,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".login.activity.LoginActivity"
+            android:name=".modules.login.activity.LoginActivity"
             android:theme="@style/LoginTheme" />
-        <activity android:name=".login.activity.HomeActivity"></activity>
+        <activity android:name=".modules.login.activity.HomeActivity"></activity>
 
     </application>
 

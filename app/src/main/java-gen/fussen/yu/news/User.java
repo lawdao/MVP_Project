@@ -8,8 +8,6 @@ public class User {
 
     private Long id;
     /** Not-null value. */
-    private String userId;
-    /** Not-null value. */
     private String nickName;
     /** Not-null value. */
     private String avatarUrl;
@@ -25,9 +23,8 @@ public class User {
         this.id = id;
     }
 
-    public User(Long id, String userId, String nickName, String avatarUrl, String mobile, String gender) {
+    public User(Long id, String nickName, String avatarUrl, String mobile, String gender) {
         this.id = id;
-        this.userId = userId;
         this.nickName = nickName;
         this.avatarUrl = avatarUrl;
         this.mobile = mobile;
@@ -40,16 +37,6 @@ public class User {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    /** Not-null value. */
-    public String getUserId() {
-        return userId;
-    }
-
-    /** Not-null value; ensure this value is available before it is saved to the database. */
-    public void setUserId(String userId) {
-        this.userId = userId;
     }
 
     /** Not-null value. */

@@ -13,7 +13,7 @@ import android.widget.ProgressBar;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import example.fussen.baselibrary.base.presenter.PresenterLife;
+import fussen.yu.news.base.presenter.PresenterLife;
 import example.fussen.baselibrary.utils.AppUtil;
 import fussen.yu.news.App;
 import fussen.yu.news.inject.component.DaggerFragmentComponent;
