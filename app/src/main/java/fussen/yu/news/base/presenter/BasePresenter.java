@@ -20,7 +20,7 @@ import rx.Subscription;
 
 public class BasePresenter<V extends BaseView, T> implements PresenterLife, RequestCallBack<T> {
 
-    public static final String TAG = "BasePresenter";
+    public static final String TAG = "[BasePresenter]";
 
     protected Subscription mSubscription; //用来取消订阅
 
@@ -107,5 +107,18 @@ public class BasePresenter<V extends BaseView, T> implements PresenterLife, Requ
     @Override
     public void onCompleted() {
         LogUtil.fussenLog().d(TAG + "======Presenter===onCompleted========");
+    }
+
+    @Override
+    public void onProgress(long downSize, long fileSize) {
+
+    }
+
+    @Override
+    public void dowloadSuccess(String path, String fileName, long fileSize) {
+        LogUtil.fussenLog().d(TAG + "=====Presenter====dowLoadSuccess========");
+        if (isViewAttached()) {
+            mView.get().hideProgress();
+        }
     }
 }

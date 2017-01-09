@@ -11,4 +11,5 @@ public class NetConfig {
     public static final String LOGING_URL = "users?do=login";
     public static final String GETSUBJECT_URL = "course?do=GetCourse";
     public static final String GET_ALL_TYPE = "template?do=getAllOfficialTemplateType";
+    public static final String UPLOAD_PHOTO = "photo?do=UploadPhoto";
 }

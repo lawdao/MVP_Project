@@ -31,7 +31,7 @@ import okhttp3.HttpUrl;
 public class PersistentCookieJar implements ClearableCookieJar {
 
 
-    private static final String TAG = "PersistentCookieJar";
+    private static final String TAG = "[Cookies]";
 
     private CookieCache cache;
     private CookiePersistor persistor;

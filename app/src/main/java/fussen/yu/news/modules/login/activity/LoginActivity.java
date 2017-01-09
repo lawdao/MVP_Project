@@ -78,7 +78,7 @@ public class LoginActivity extends BaseActivity implements LoginView {
     @Override
     public void showProgress() {
 
-        progressDialog.show();
+//        progressDialog.show();
 
     }
 
@@ -103,7 +103,6 @@ public class LoginActivity extends BaseActivity implements LoginView {
             overridePendingTransition(0, android.R.anim.fade_out);
             finish();
         }
-
     }
 
 

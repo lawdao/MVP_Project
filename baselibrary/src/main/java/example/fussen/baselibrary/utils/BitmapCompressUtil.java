@@ -4,12 +4,13 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
-import android.os.Environment;
 import android.util.DisplayMetrics;
 import android.view.WindowManager;
 
 import java.io.File;
 import java.io.FileOutputStream;
+
+import example.fussen.baselibrary.config.FileConfig;
 
 /**
  * Created by Fussen on 2017/1/4.
@@ -71,7 +72,9 @@ public class BitmapCompressUtil {
         }
 
         private Exception compress(Bitmap bitmap) {
-            File outDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+//            File outDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+
+            File outDir = new File(FileConfig.COMPRESS_IMG_PATH);
             if (!outDir.exists()) {
                 outDir.mkdirs();
             }

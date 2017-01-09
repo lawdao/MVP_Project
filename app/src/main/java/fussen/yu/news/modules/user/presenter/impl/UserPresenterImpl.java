@@ -1,29 +1,28 @@
 package fussen.yu.news.modules.user.presenter.impl;
 
-import java.util.Map;
+import java.io.File;
 
 import javax.inject.Inject;
 
 import fussen.yu.news.base.presenter.BasePresenter;
-import fussen.yu.news.modules.course.bean.CourseData;
-import fussen.yu.news.modules.course.model.CourseInteractor;
-import fussen.yu.news.modules.course.model.impl.CourseInteractorImpl;
-import fussen.yu.news.modules.course.presenter.CoursePresenter;
-import fussen.yu.news.modules.course.view.CourseView;
+import fussen.yu.news.modules.user.bean.UpLoad;
+import fussen.yu.news.modules.user.model.UserInteractor;
+import fussen.yu.news.modules.user.model.impl.UserInteractorImpl;
 import fussen.yu.news.modules.user.presenter.UserPresenter;
+import fussen.yu.news.modules.user.view.UserView;
 
 /**
  * Created by Fussen on 2016/12/28.
  */
 
-public class UserPresenterImpl extends BasePresenter<CourseView, CourseData> implements UserPresenter {
+public class UserPresenterImpl extends BasePresenter<UserView, Object> implements UserPresenter {
 
 
-    private CourseInteractor<CourseData> mCourseInteractor;
+    private UserInteractor mUserInteractor;
 
     @Inject
-    public UserPresenterImpl(CourseInteractorImpl courseInteractor) {
-        this.mCourseInteractor = courseInteractor;
+    public UserPresenterImpl(UserInteractorImpl userInteractor) {
+        this.mUserInteractor = userInteractor;
     }
 
     @Override
@@ -33,9 +32,35 @@ public class UserPresenterImpl extends BasePresenter<CourseView, CourseData> imp
 
 
     @Override
-    public void onSuccess(CourseData data) {
+    public void onSuccess(Object data) {
         super.onSuccess(data);
-        getView().loadData(data);
+        if (data instanceof UpLoad) {
+            getView().upLoadImageSucce((UpLoad) data);
+        }
     }
 
+    @Override
+    public void onProgress(long downSize, long fileSize) {
+
+        if (isViewAttached()) {
+            getView().onProgress(downSize, fileSize);
+        }
+    }
+
+    @Override
+    public void dowloadSuccess(String path, String fileName, long fileSize) {
+        super.dowloadSuccess(path, fileName, fileSize);
+        if (isViewAttached())
+            getView().downLoadImageSucce(path);
+    }
+
+    @Override
+    public void upLoadImage(File file) {
+        mSubscription = mUserInteractor.upLoadImage(file, this);
+    }
+
+    @Override
+    public void downLoadImage(String url) {
+        mSubscription = mUserInteractor.downLoadImage(url, this);
+    }
 }

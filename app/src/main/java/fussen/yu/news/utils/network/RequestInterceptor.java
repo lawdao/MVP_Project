@@ -22,20 +22,21 @@ public class RequestInterceptor implements Interceptor {
     @Override
     public Response intercept(Chain chain) throws IOException {
 
+        Request request = chain.request();
 
-        Response response = chain.proceed(chain.request());
+        Request.Builder builder = request
+                .newBuilder();
+
+        //添加固定请求头
+        builder.addHeader("BODY-X-TYPE", "2")
+                .addHeader("BODY-X-VERSION", "1.0")
+                .build();
+
+        Response response = chain.proceed(request);//执行请求
 
         LogUtil.fussenLog().e(TAG + "========request url========" + response.request().url());
         LogUtil.fussenLog().e(TAG + "=======response code=======" + response.code());
 
-        //添加固定请求头
-
-        Request.Builder builder = chain.request()
-                .newBuilder();
-
-        builder.addHeader("BODY-X-TYPE", "2")
-                .addHeader("BODY-X-VERSION", "1.0")
-                .build();
-        return chain.proceed(builder.build());
+        return response;
     }
 }

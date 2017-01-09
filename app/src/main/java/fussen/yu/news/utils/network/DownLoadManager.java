@@ -22,13 +22,16 @@ import okhttp3.ResponseBody;
 public class DownLoadManager {
     private DownLoadCallBack callBack;
 
-    public static final String TAG = "DownLoadManager";
+    public static final String TAG = "[DownLoadManager]";
 
     private static String APK_CONTENTTYPE = "application/vnd.android.package-archive";
 
     private static String PNG_CONTENTTYPE = "image/png";
 
     private static String JPG_CONTENTTYPE = "image/jpg";
+
+    private static String JPEG_CONTENTTYPE = "image/jpeg";
+    private static String VIDEO_CONTENTTYPE = "video/mp4";
 
     private static String fileSuffix = "";
 
@@ -46,14 +49,18 @@ public class DownLoadManager {
         handler = new Handler(Looper.getMainLooper());
     }
 
-    private static DownLoadManager sInstance;
+    private static volatile DownLoadManager sInstance;
 
     /**
      * DownLoadManager getInstance
      */
-    public static synchronized DownLoadManager getInstance(DownLoadCallBack callBack, Context context) {
+    public static DownLoadManager getInstance(DownLoadCallBack callBack, Context context) {
         if (sInstance == null) {
-            sInstance = new DownLoadManager(context, callBack);
+            synchronized (DownLoadManager.class) {
+                if (sInstance == null) {
+                    sInstance = new DownLoadManager(context, callBack);
+                }
+            }
         }
         return sInstance;
     }
@@ -72,9 +79,12 @@ public class DownLoadManager {
                     fileSuffix = ".png";
                 } else if (type.equals(JPG_CONTENTTYPE)) {
                     fileSuffix = ".jpg";
+                } else if (type.equals(JPEG_CONTENTTYPE)) {
+                    fileSuffix = ".jpeg";
                 } else {
-                    fileSuffix = body.contentType().subtype();
+                    fileSuffix = "."+body.contentType().subtype();
                 }
+
                 name = name + fileSuffix;
             }
         } else {
@@ -82,12 +92,19 @@ public class DownLoadManager {
         }
 
         if (path == null) {
-            path = mContext.getExternalFilesDir(null) + File.separator + name;
+            path = mContext.getExternalFilesDir(null) + File.separator + "download";
         }
+
         Log.d(TAG, "========path:=========" + path);
         try {
             // todo change the file location/name according to your needs
-            File futureStudioIconFile = new File(path);
+            File futureStudioIconFile = new File(path + File.separator + name);
+
+            Log.d(TAG, "========futureStudioIconFile:=path========" + futureStudioIconFile.getAbsolutePath());
+
+            if (!new File(path).exists()) {
+                new File(path).mkdirs();
+            }
 
             InputStream inputStream = null;
             OutputStream outputStream = null;
@@ -97,7 +114,9 @@ public class DownLoadManager {
 
                 final long fileSize = body.contentLength();
                 long fileSizeDownloaded = 0;
+
                 Log.d(TAG, "======file length: =======" + fileSize);
+
                 inputStream = body.byteStream();
                 outputStream = new FileOutputStream(futureStudioIconFile);
 
@@ -118,7 +137,7 @@ public class DownLoadManager {
                             handler.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                    callBack.onProgress(finalFileSizeDownloaded);
+                                    callBack.onProgress(finalFileSizeDownloaded, fileSize);
                                 }
                             }, 200);
                         }
@@ -129,7 +148,6 @@ public class DownLoadManager {
                 Log.d(TAG, "=======file downloaded:======= " + fileSizeDownloaded + " of " + fileSize);
 
                 isDownLoading = false;
-
 
                 if (callBack != null) {
                     final String finalName = name;
@@ -172,7 +190,7 @@ public class DownLoadManager {
         }
 
         if (AppUtil.checkMain()) {
-            callBack.onError(new Throwable());
+            callBack.onError(new Throwable(e));
         } else {
             handler.post(new Runnable() {
                 @Override

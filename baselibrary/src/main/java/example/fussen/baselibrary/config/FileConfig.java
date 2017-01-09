@@ -15,4 +15,9 @@ public class FileConfig {
 
     //选择照片存储路径
     public static final String SELETE_IMG_PATH = FILE_PATH + "/selectImage";
+
+    //压缩图片路径
+    public static final String COMPRESS_IMG_PATH = FILE_PATH + "/compress";
+
+    public static final String DOWNLOAD_IMG_PATH = FILE_PATH + "/download";
 }

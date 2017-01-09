@@ -1,5 +1,7 @@
 package fussen.yu.news.modules.user.presenter;
 
+import java.io.File;
+
 import fussen.yu.news.base.presenter.PresenterLife;
 
 /**
@@ -8,4 +10,7 @@ import fussen.yu.news.base.presenter.PresenterLife;
 
 public interface UserPresenter extends PresenterLife {
 
+    void upLoadImage(File file);
+
+    void downLoadImage(String url);
 }

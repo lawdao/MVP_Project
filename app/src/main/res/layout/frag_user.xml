@@ -71,7 +71,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="10dp"
-                android:text="编辑资料"
+                android:text="上传图片"
                 android:textColor="@color/text_color"
                 android:textSize="16sp" />
 
@@ -101,7 +101,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="10dp"
-                android:text="我的图片"
+                android:text="下载图片"
                 android:textColor="@color/text_color"
                 android:textSize="16sp" />
 

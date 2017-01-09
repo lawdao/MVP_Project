@@ -23,6 +23,7 @@ import fussen.yu.news.utils.network.cookie.cache.SetCookieCache;
 import fussen.yu.news.utils.network.cookie.persistence.SharedPrefsCookiePersistor;
 import fussen.yu.news.utils.network.service.LoginService;
 import okhttp3.Cache;
+import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
@@ -44,7 +45,7 @@ import rx.schedulers.Schedulers;
 public class NetworkUtils {
 
 
-    private static final String TAG = "NetworkUtils";
+    private static final String TAG = "[Network]";
 
     private Map<String, Observable<ResponseBody>> downMaps = new HashMap<String, Observable<ResponseBody>>() {
     };
@@ -52,14 +53,14 @@ public class NetworkUtils {
 
     private static volatile OkHttpClient mOkHttpClient;
     private NetService mNetService;
-    private static NetworkUtils mInstance;
-    private static byte[] syncByte = new byte[0];
+    private static volatile NetworkUtils mInstance;
 
     private static Context mContext;
+    private static volatile Object apiService;
 
     public static NetworkUtils getInstance(Context context) {
         if (mInstance == null) {
-            synchronized (syncByte) {
+            synchronized (NetworkUtils.class) {
                 if (mInstance == null) {
                     mInstance = new NetworkUtils(context);
                 }
@@ -69,7 +70,7 @@ public class NetworkUtils {
     }
 
 
-    public NetworkUtils(Context context) {
+    private NetworkUtils(Context context) {
         this.mContext = context;
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(NetConfig.BASE_URL)
@@ -83,6 +84,11 @@ public class NetworkUtils {
 
     /**
      * 登录模块
+     * <p>
+     * 可以用来做模块开发
+     * <p>
+     * 不同的模块可以创建不同的Service
+     *
      * @return
      */
     public static LoginService getLogin() {
@@ -95,14 +101,20 @@ public class NetworkUtils {
      */
     private static <T> T createApi(Class<T> clazz) {
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(NetConfig.BASE_URL)
-                .client(getOkHttpClient())
-                .addConverterFactory(JsonConverterFactory.create())
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .build();
-
-        return retrofit.create(clazz);
+        if (apiService == null) {
+            synchronized (NetworkUtils.class) {
+                if (apiService == null) {
+                    Retrofit retrofit = new Retrofit.Builder()
+                            .baseUrl(NetConfig.BASE_URL)
+                            .client(getOkHttpClient())
+                            .addConverterFactory(JsonConverterFactory.create())
+                            .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                            .build();
+                    apiService = retrofit.create(clazz);
+                }
+            }
+        }
+        return (T) apiService;
     }
 
 
@@ -135,9 +147,10 @@ public class NetworkUtils {
      * 已过滤掉ResponseBody中的其他信息只留下返回数据中data节点
      * <p>
      * 已用gson解析
-     *
-     *
+     * <p>
+     * <p>
      * 返回的是 Subscription
+     *
      * @param url
      * @param parameters
      * @param callBack
@@ -145,7 +158,6 @@ public class NetworkUtils {
      * @return
      */
     public <T> Subscription executePost(final String url, final Map<String, String> parameters, final ResponseCallBack<T> callBack) {
-
 
         final Type[] types = callBack.getClass().getGenericInterfaces();
         if (MethodHandler(types) == null || MethodHandler(types).size() == 0) {
@@ -165,7 +177,7 @@ public class NetworkUtils {
      * 已过滤掉ResponseBody中的其他信息只留下返回数据中data节点
      * <p>
      * 已用gson解析
-     *
+     * <p>
      * 返回的是具体的实体类
      *
      * @param url
@@ -185,7 +197,7 @@ public class NetworkUtils {
 
         Log.d(TAG, "=========Type:========" + types[0]);
 
-        return (T)mNetService.postRequest(url, parameters)
+        return (T) mNetService.postRequest(url, parameters)
                 .compose(schedulersTransformer)
                 .subscribe(new NetSubscriber(finalNeedType, callBack));
     }
@@ -289,14 +301,28 @@ public class NetworkUtils {
      * upload Flie
      *
      * @param url
-     * @param requestBody requestBody
-     * @param subscriber  subscriber
+     * @param callBack callBack
      * @return
      */
-    public <T> T uploadFlie(String url, RequestBody requestBody, MultipartBody.Part file, Subscriber<ResponseBody> subscriber) {
-        return (T) mNetService.uploadFlie(url, requestBody, file)
+    public <T> Subscription uploadFlie(String url, File file, final ResponseCallBack<T> callBack) {
+
+        final Type[] types = callBack.getClass().getGenericInterfaces();
+        if (MethodHandler(types) == null || MethodHandler(types).size() == 0) {
+            return null;
+        }
+        final Type finalNeedType = MethodHandler(types).get(0);
+
+        Log.d(TAG, "=========Type:========" + types[0]);
+
+        RequestBody requestFile =
+                RequestBody.create(MediaType.parse("application/otcet-stream"), file);
+
+        // MultipartBody.Part is used to send also the actual file name
+        MultipartBody.Part filePart = MultipartBody.Part.createFormData("file", file.getName(), requestFile);
+
+        return mNetService.uploadFlie(url, filePart)
                 .compose(schedulersTransformer)
-                .subscribe(subscriber);
+                .subscribe(new NetSubscriber(finalNeedType, callBack));
     }
 
 
@@ -321,8 +347,8 @@ public class NetworkUtils {
      * @param url
      * @param callBack
      */
-    public void download(String url, DownLoadCallBack callBack) {
-        download(url, null, callBack);
+    public Subscription download(String url, DownLoadCallBack callBack) {
+        return download(url, null, callBack);
     }
 
 
@@ -331,8 +357,8 @@ public class NetworkUtils {
      * @param name
      * @param callBack
      */
-    public void download(String url, String name, DownLoadCallBack callBack) {
-        download(url, null, name, callBack);
+    public Subscription download(String url, String name, DownLoadCallBack callBack) {
+        return download(url, null, name, callBack);
     }
 
 
@@ -342,7 +368,7 @@ public class NetworkUtils {
      * @param name
      * @param callBack
      */
-    public void download(String url, String savePath, String name, DownLoadCallBack callBack) {
+    public Subscription download(String url, String savePath, String name, DownLoadCallBack callBack) {
 
         if (downMaps.get(url) == null) {
             downObservable = mNetService.downloadFile(url);
@@ -350,7 +376,7 @@ public class NetworkUtils {
         } else {
             downObservable = downMaps.get(url);
         }
-        executeDownload(savePath, name, callBack);
+        return executeDownload(savePath, name, callBack);
     }
 
 
@@ -361,15 +387,15 @@ public class NetworkUtils {
      * @param name
      * @param callBack
      */
-    private void executeDownload(String savePath, String name, DownLoadCallBack callBack) {
+    private Subscription executeDownload(String savePath, String name, DownLoadCallBack callBack) {
         if (DownLoadManager.isDownLoading) {
             downObservable.unsubscribeOn(Schedulers.io());
             DownLoadManager.isDownLoading = false;
             DownLoadManager.isCancel = true;
-            return;
+            return null;
         }
         DownLoadManager.isDownLoading = true;
-        downObservable.compose(schedulersTransformerDown)
+        return downObservable.compose(schedulersTransformerDown)
                 .subscribe(new DownSubscriber<ResponseBody>(savePath, name, callBack, mContext));
     }
 

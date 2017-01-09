@@ -1,6 +1,6 @@
 package fussen.yu.news.modules.user.model;
 
-import java.util.Map;
+import java.io.File;
 
 import fussen.yu.news.utils.network.callback.RequestCallBack;
 import rx.Subscription;
@@ -10,5 +10,6 @@ import rx.Subscription;
  */
 
 public interface UserInteractor<T> {
-    Subscription getAllCourseType(Map<String, String> params, RequestCallBack<T> callBack);
+    Subscription upLoadImage(File file, RequestCallBack<T> callBack);
+    Subscription downLoadImage(String url, RequestCallBack<T> callBack);
 }

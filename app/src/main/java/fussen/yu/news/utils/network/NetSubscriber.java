@@ -26,7 +26,7 @@ import okhttp3.ResponseBody;
 public class NetSubscriber<T> extends BaseSubscriber<ResponseBody> {
 
 
-    public static final String TAG = "NetSubscriber";
+    public static final String TAG = "[NetSubscriber]";
 
     private Type finalNeedType;
     private ResponseCallBack<T> callBack;

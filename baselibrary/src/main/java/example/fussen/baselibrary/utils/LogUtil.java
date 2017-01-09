@@ -7,7 +7,7 @@ import java.util.Hashtable;
 public class LogUtil {
     private final static boolean logFlag = true;
 
-    public final static String tag = "[bodyplus]";
+    public final static String tag = "[fussen]";
     private final static int logLevel = Log.VERBOSE;
     private static Hashtable<String, LogUtil> sLoggerTable = new Hashtable<String, LogUtil>();
     private String mClassName;
@@ -15,7 +15,7 @@ public class LogUtil {
     private static LogUtil fussenLog;
     private static LogUtil chunLog;
 
-    private static final String FUSSEN = "@fussen@ ";
+    private static final String FUSSEN = "[fussen]";
     private static final String CHUNY = "@chuny@ ";
 
     private LogUtil(String name) {

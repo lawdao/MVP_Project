@@ -17,7 +17,7 @@ public abstract class DownLoadCallBack  {
      */
     abstract public void onError(java.lang.Throwable e);
 
-    public void onProgress(long fileSize){}
+    public void onProgress(long downSize,long fileSize){}
 
     /**
      * @param path

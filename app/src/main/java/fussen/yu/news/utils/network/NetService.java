@@ -56,11 +56,10 @@ public interface NetService {
 
 
     @Multipart
-    @POST()
+    @POST
     Observable<ResponseBody> uploadFlie(
             @Url String fileUrl,
-            @Part("description") RequestBody description,
-            @Part("files") MultipartBody.Part file);
+            @Part MultipartBody.Part filePart);
 
 
     @Multipart

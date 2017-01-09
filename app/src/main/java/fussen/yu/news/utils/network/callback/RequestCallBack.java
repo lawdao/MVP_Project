@@ -13,4 +13,9 @@ public interface RequestCallBack<T> {
     void onError(String errorMsg); //请求失败
 
     void onCompleted();//请求完成
+
+    //下载
+    void onProgress(long downSize, long fileSize);
+
+    void dowloadSuccess(String path, String fileName, long fileSize);
 }

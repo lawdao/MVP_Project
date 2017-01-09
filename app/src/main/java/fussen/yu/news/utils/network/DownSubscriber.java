@@ -8,7 +8,7 @@ import android.util.Log;
  */
 
 public class DownSubscriber <ResponseBody extends okhttp3.ResponseBody> extends BaseSubscriber<ResponseBody> {
-    public static final String TAG = "DownLoad";
+    public static final String TAG = "[DownLoad]";
     private DownLoadCallBack callBack;
     private String path;
     private String name;
