@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#464a4d</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
-
+    <color name="colorPrimary">#F44336</color>
+    <color name="colorPrimaryDark">#F44336</color>
+    <color name="colorAccent">#B3F44336</color>
 
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
     <color name="red">#FF3B30</color>
-    <color name="app_color">#1dafeb</color>
+    <color name="app_color">#E91E63</color>
 
     <color name="transparent">#00000000</color>
+    <color name="sport_control_color">#212121</color>
+
+
+    <!-- Bottom Navigation -->
+    <color name="bg_bottom_navigation">#fcfcfc</color>
+    <color name="accent_bottom_navigation">#E91E63</color>
+    <color name="inactive_bottom_navigation">#9b9b9b</color>
 
 
     <!--transparent-->
@@ -20,14 +26,15 @@
     <color name="primary_text">#de000000</color>
 
     <!--页面标题颜色-->
-    <color name="base_title_color">#464a4d</color>
+    <color name="base_title_color">#F44336</color>
 
     <!--所有页面背景色-->
     <color name="all_bg_color">#f0f0f0</color>
 
-    <color name="img_preesed_color">#4d5255</color>
+    <color name="img_preesed_color">#1A000000</color>
 
 
+    <color name="common_content_bg">#f9f9fd</color>
 
     <!-- 通用item颜色 -->
     <color name="item_white_background_press">#d3d3d3</color>
@@ -49,8 +56,7 @@
     <color name="input_hint_color">#B4B4B4</color>
 
     <!--输入框光标的颜色-->
-    <color name="input_cursor_color">#1dafeb</color>
-
+    <color name="input_cursor_color">#E91E63</color>
 
 
     <color name="rgb_color_01">#333333</color>
@@ -61,7 +67,7 @@
     <color name="rgb_color_05">#FFFFFF</color>
     <color name="rgb_color_06">#FFFFFF</color>
     <color name="rgb_color_07">#FFFFFF</color>
-    <color name="rgb_color_08">#1dafeb</color>
+    <color name="rgb_color_08">#E91E63</color>
     <color name="rgb_color_09">#464a4d</color>
     <color name="rgb_color_10">#dfdfdf</color>
     <color name="rgb_color_11">#F00000</color>

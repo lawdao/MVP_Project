@@ -22,7 +22,6 @@ import fussen.yu.news.base.fragment.BaseFragment;
 import fussen.yu.news.modules.subject.bean.WeekEvent;
 import fussen.yu.news.modules.subject.presenter.impl.SubjectPresenterImpl;
 import fussen.yu.news.modules.subject.view.SubjectView;
-import fussen.yu.news.utils.PreferUtils;
 import fussen.yu.news.utils.ToastUtil;
 
 /**
@@ -37,8 +36,8 @@ public class SubjectFragment extends BaseFragment implements WeekView.EventClick
     @BindView(R.id.view_container)
     FrameLayout viewContainer;
 
-    @BindView(R.id.view_data)
-    LinearLayout view_data;
+    @BindView(R.id.contentView)
+    LinearLayout contentView;
 
     @Inject
     SubjectPresenterImpl mSubjectPresenter;
@@ -51,8 +50,6 @@ public class SubjectFragment extends BaseFragment implements WeekView.EventClick
     @Override
     protected void initView(View view) {
 
-        viewContainer.addView(progressBar);
-
         mPresenter = mSubjectPresenter;
 
         mPresenter.onBindView(this);
@@ -61,18 +58,18 @@ public class SubjectFragment extends BaseFragment implements WeekView.EventClick
         weekView.setMonthChangeListener(this);
         weekView.setEmptyViewClickListener(this);
 
-
-        Map<String, String> params = new HashMap<>();
-        params.put("startDate", calculateStartDate());
-        params.put("endDate", calculateEndDate());
-
-        mSubjectPresenter.getSubject(params);
+        loadData(false);
 
     }
 
     @Override
     protected void initInject() {
         mFragmentComponent.inject(this);
+    }
+
+    @Override
+    protected void showErrorMessage(String errorMsg, boolean pullToRefresh) {
+
     }
 
     @Override
@@ -105,20 +102,11 @@ public class SubjectFragment extends BaseFragment implements WeekView.EventClick
     }
 
     @Override
-    public void showProgress() {
-
-    }
-
-    @Override
-    public void hideProgress() {
-        progressBar.setVisibility(View.GONE);
-    }
-
-    @Override
-    public void showErrorMsg(String errorMsg) {
-        ToastUtil.showToast(errorMsg);
-
-        PreferUtils.getInstance().setAppIsLogin(false);
+    public void loadData(boolean pullToRefresh) {
+        Map<String, String> params = new HashMap<>();
+        params.put("startDate", calculateStartDate());
+        params.put("endDate", calculateEndDate());
+        mSubjectPresenter.getSubject(params, pullToRefresh);
     }
 
 

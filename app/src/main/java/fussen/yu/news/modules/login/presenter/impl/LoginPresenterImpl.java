@@ -5,7 +5,8 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
-import fussen.yu.news.base.presenter.BasePresenter;
+import example.fussen.baselibrary.base.presenter.BasePresenter;
+import example.fussen.baselibrary.callback.RequestCallBack;
 import fussen.yu.news.modules.login.bean.UserInfo;
 import fussen.yu.news.modules.login.model.LoginInteractor;
 import fussen.yu.news.modules.login.model.impl.LoginInteractorImpl;
@@ -18,7 +19,7 @@ import fussen.yu.news.modules.login.view.LoginView;
  * 当presenter创建的时候，此时model层也应该随之被创建，可以准备获取数据
  */
 
-public class LoginPresenterImpl extends BasePresenter<LoginView, UserInfo> implements LoginPresenter {
+public class LoginPresenterImpl extends BasePresenter<LoginView, UserInfo> implements LoginPresenter, RequestCallBack<UserInfo> {
 
     private LoginInteractor<UserInfo> mLoginInteractor;
 
@@ -35,7 +36,7 @@ public class LoginPresenterImpl extends BasePresenter<LoginView, UserInfo> imple
 
     @Override
     public void login(Map<String, String> accountInfo) {
-        getView().showProgress();
+        getView().showProgress(false);
         toLogin(accountInfo);
     }
 
@@ -60,14 +61,14 @@ public class LoginPresenterImpl extends BasePresenter<LoginView, UserInfo> imple
         getView().toHomeActivity(data);
     }
 
-
     /**
      * 访问网络失败回调
      *
      * @param errorMsg
+     * @param pullToRefresh
      */
     @Override
-    public void onError(String errorMsg) {
-        super.onError(errorMsg);
+    public void onError(String errorMsg, boolean pullToRefresh) {
+        super.onError(errorMsg, pullToRefresh);
     }
 }

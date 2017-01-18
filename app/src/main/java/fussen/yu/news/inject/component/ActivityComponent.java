@@ -9,6 +9,7 @@ import fussen.yu.news.inject.scope.ContextLife;
 import fussen.yu.news.inject.scope.ForActivity;
 import fussen.yu.news.modules.login.activity.HomeActivity;
 import fussen.yu.news.modules.login.activity.LoginActivity;
+import fussen.yu.news.modules.sport.activity.SportActivity;
 
 /**
 /**
@@ -31,5 +32,6 @@ public interface ActivityComponent {
     void inject(HomeActivity homeActivity);
 
     void inject(LoginActivity loginActivity);
+    void inject(SportActivity sportActivity);
 }
 

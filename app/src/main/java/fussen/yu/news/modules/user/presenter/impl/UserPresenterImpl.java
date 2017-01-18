@@ -4,7 +4,8 @@ import java.io.File;
 
 import javax.inject.Inject;
 
-import fussen.yu.news.base.presenter.BasePresenter;
+import example.fussen.baselibrary.base.presenter.BasePresenter;
+import example.fussen.baselibrary.callback.RequestCallBack;
 import fussen.yu.news.modules.user.bean.UpLoad;
 import fussen.yu.news.modules.user.model.UserInteractor;
 import fussen.yu.news.modules.user.model.impl.UserInteractorImpl;
@@ -15,7 +16,7 @@ import fussen.yu.news.modules.user.view.UserView;
  * Created by Fussen on 2016/12/28.
  */
 
-public class UserPresenterImpl extends BasePresenter<UserView, Object> implements UserPresenter {
+public class UserPresenterImpl extends BasePresenter<UserView, Object> implements UserPresenter, RequestCallBack<Object> {
 
 
     private UserInteractor mUserInteractor;
@@ -41,7 +42,6 @@ public class UserPresenterImpl extends BasePresenter<UserView, Object> implement
 
     @Override
     public void onProgress(long downSize, long fileSize) {
-
         if (isViewAttached()) {
             getView().onProgress(downSize, fileSize);
         }
@@ -61,6 +61,7 @@ public class UserPresenterImpl extends BasePresenter<UserView, Object> implement
 
     @Override
     public void downLoadImage(String url) {
+        getView().showProgress(false);
         mSubscription = mUserInteractor.downLoadImage(url, this);
     }
 }

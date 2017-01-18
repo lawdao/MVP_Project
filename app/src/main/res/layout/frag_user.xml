@@ -1,120 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/all_bg_color"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:id="@+id/ll_top"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/base_title_color">
+    <include layout="@layout/loading_view" />
 
-        <FrameLayout
-            android:id="@+id/fl_top_view"
-            android:layout_width="fill_parent"
-            android:layout_height="264dp"
+    <include layout="@layout/error_view" />
+
+    <RelativeLayout
+        android:id="@+id/contentView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/ll_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:background="@color/base_title_color">
 
-            <ImageView
+            <FrameLayout
+                android:id="@+id/fl_top_view"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:scaleType="centerCrop"
-                android:src="@drawable/bg_user" />
+                android:layout_height="264dp"
+                android:background="@color/base_title_color">
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/bg_user" />
 
 
-            <LinearLayout
-                android:id="@+id/ll_user_info"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
-
-                <example.fussen.baselibrary.widget.CircleImageView
-                    android:id="@+id/user_head"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp" />
-
-                <TextView
-                    android:id="@+id/tv_user_name"
+                <LinearLayout
+                    android:id="@+id/ll_user_info"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="Fussen"
-                    android:textColor="@color/white"
+                    android:layout_gravity="center"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <example.fussen.baselibrary.widget.CircleImageView
+                        android:id="@+id/user_head"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp" />
+
+                    <TextView
+                        android:id="@+id/tv_user_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Fussen"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+            </FrameLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ll_top"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/view_editor"
+                android:layout_width="fill_parent"
+                android:layout_height="56dp"
+                android:background="@drawable/selector_white_background_item"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:text="上传图片"
+                    android:textColor="@color/text_color"
                     android:textSize="16sp" />
 
-            </LinearLayout>
 
-        </FrameLayout>
-    </LinearLayout>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_next" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/ll_top"
-        android:orientation="vertical">
-
-        <RelativeLayout
-            android:id="@+id/view_editor"
-            android:layout_width="fill_parent"
-            android:layout_height="56dp"
-            android:background="@drawable/selector_white_background_item"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="10dp"
-                android:text="上传图片"
-                android:textColor="@color/text_color"
-                android:textSize="16sp" />
+            </RelativeLayout>
 
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/ic_next" />
-
-        </RelativeLayout>
-
-
-        <RelativeLayout
-            android:id="@+id/view_photo"
-            android:layout_width="fill_parent"
-            android:layout_height="56dp"
-            android:layout_marginTop="6dp"
-            android:background="@drawable/selector_white_background_item"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp">
+            <RelativeLayout
+                android:id="@+id/view_photo"
+                android:layout_width="fill_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/selector_white_background_item"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp">
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="10dp"
-                android:text="下载图片"
-                android:textColor="@color/text_color"
-                android:textSize="16sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:text="下载图片"
+                    android:textColor="@color/text_color"
+                    android:textSize="16sp" />
 
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_next" />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/ic_next" />
+            </RelativeLayout>
 
-        </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
 
-    </LinearLayout>
-
-</RelativeLayout>
+</FrameLayout>

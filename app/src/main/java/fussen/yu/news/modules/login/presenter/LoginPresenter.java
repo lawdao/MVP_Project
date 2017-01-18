@@ -2,7 +2,7 @@ package fussen.yu.news.modules.login.presenter;
 
 import java.util.Map;
 
-import fussen.yu.news.base.presenter.PresenterLife;
+import example.fussen.baselibrary.base.presenter.PresenterLife;
 
 
 /**

@@ -2,8 +2,11 @@ package fussen.yu.news.modules.login.activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.HashMap;
@@ -12,6 +15,7 @@ import java.util.Map;
 import javax.inject.Inject;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 import example.fussen.baselibrary.utils.LogUtil;
 import example.fussen.baselibrary.widget.DeleteEditText;
@@ -39,6 +43,12 @@ public class LoginActivity extends BaseActivity implements LoginView {
     TextView tvRegisterUser;
     @BindView(R.id.tv_forgot_password)
     TextView tvForgotPassword;
+    @BindView(R.id.base_back)
+    ImageView back;
+    @BindView(R.id.base_title)
+    TextView title;
+    @BindView(R.id.base_title_view)
+    RelativeLayout titleView;
 
     private ProgressDialog progressDialog;
 
@@ -76,10 +86,8 @@ public class LoginActivity extends BaseActivity implements LoginView {
 
 
     @Override
-    public void showProgress() {
-
-//        progressDialog.show();
-
+    public void showProgress(boolean pullToRefresh) {
+        progressDialog.show();
     }
 
     @Override
@@ -88,10 +96,15 @@ public class LoginActivity extends BaseActivity implements LoginView {
     }
 
     @Override
-    public void showErrorMsg(String errorMsg) {
+    public void showErrorMsg(String errorMsg, boolean pullToRefresh) {
         LogUtil.fussenLog().d("1008611" + "====showErrorMsg========" + errorMsg);
         ToastUtil.showToast(errorMsg);
+    }
 
+
+    @Override
+    public void loadData(boolean pullToRefresh) {
+        login();
     }
 
 
@@ -110,7 +123,7 @@ public class LoginActivity extends BaseActivity implements LoginView {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_login:
-                login();
+                loadData(false);
                 break;
             case R.id.tv_register_user:
                 break;
@@ -136,5 +149,12 @@ public class LoginActivity extends BaseActivity implements LoginView {
             mLoginPresenter.login(params);
         }
 
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
     }
 }

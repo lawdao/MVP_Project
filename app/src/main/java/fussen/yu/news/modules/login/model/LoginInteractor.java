@@ -2,7 +2,7 @@ package fussen.yu.news.modules.login.model;
 
 import java.util.Map;
 
-import fussen.yu.news.utils.network.callback.RequestCallBack;
+import example.fussen.baselibrary.callback.RequestCallBack;
 import rx.Subscription;
 
 /**

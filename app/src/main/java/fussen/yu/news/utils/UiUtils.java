@@ -14,4 +14,15 @@ public class UiUtils {
         return App.getContext();
     }
 
+
+    /**
+     * dp转px
+     */
+    public static int dip2px(float dpValue) {
+        final float scale =App.getContext().getResources()
+                .getDisplayMetrics().density;
+        return (int) (dpValue * scale + 0.5f);
+    }
+
+
 }

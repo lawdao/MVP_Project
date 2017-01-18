@@ -1,6 +1,6 @@
 package fussen.yu.news.modules.subject.view;
 
-import fussen.yu.news.base.view.BaseView;
+import example.fussen.baselibrary.base.view.BaseView;
 import fussen.yu.news.modules.subject.bean.WeekEvent;
 
 /**

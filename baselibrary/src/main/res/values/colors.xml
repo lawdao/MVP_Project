@@ -2,6 +2,12 @@
 <resources>
 
 
+    <color name="colorPrimary">#F44336</color>
+    <color name="colorPrimaryDark">#F44336</color>
+    <color name="colorAccent">#B3F44336</color>
+    <color name="btn_pressed">#B3F44336</color>
+    <color name="btn_normal">#F44336</color>
+
     <color name="white">#FFFFFF</color>
     <color name="transparent">#00000000</color>
 

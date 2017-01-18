@@ -18,6 +18,24 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+
+    signingConfigs {
+        debug {
+            storeFile file("/users/Fussen/BodyPlus/keysecret/debug/app_debug.jks")
+            storePassword "android"
+            keyAlias "fussen"
+            keyPassword "android"
+        }
+
+        release {
+            storeFile file("/Users/Fussen/bodyplus/keysecret/debug/app_release.jks")
+            storePassword "android"
+            keyAlias "fussen"
+            keyPassword "android"
+        }
+    }
+
     aaptOptions.cruncherEnabled = false
     aaptOptions.useNewCruncher = false
 
@@ -42,8 +60,11 @@ android {
     sourceSets {
         main {
             java.srcDirs = ['src/main/java', 'src/main/java-gen']
+
+            jniLibs.srcDirs = ['libs']
         }
     }
+
 }
 
 dependencies {
@@ -55,7 +76,11 @@ dependencies {
     apt 'com.jakewharton:butterknife-compiler:8.4.0'
     compile project(':baselibrary')
     compile 'com.github.bumptech.glide:glide:3.7.0'
-
     //greendao
     compile 'org.greenrobot:greendao:2.2.0'
+    compile 'com.aurelhubert:ahbottomnavigation:1.3.3'
+
+    //高德地图
+    compile files('libs/AMap_Location_V3.00_20160922.jar')
+    compile files('libs/AMap_3DMap_V4.0.1_20160923.jar')
 }

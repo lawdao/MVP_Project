@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <!-- size设置形状的大小 -->
+    <size
+        android:width="50dp"
+        android:height="50dp" />
+    <solid android:color="@color/colorPrimary" />
+
+    <!--描边-->
+    <stroke
+        android:width="10dp"
+        android:color="#BFF44336" />
+</shape>

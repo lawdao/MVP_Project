@@ -1,5 +1,6 @@
 package fussen.yu.news.modules.user.fragment;
 
+import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
@@ -31,6 +32,7 @@ import fussen.yu.news.utils.PreferUtils;
 import fussen.yu.news.utils.ToastUtil;
 import fussen.yu.news.utils.UiUtils;
 import fussen.yu.news.utils.db.DbUtils;
+import fussen.yu.news.utils.listener.PermissionsResultListener;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -79,13 +81,17 @@ public class UserFragment extends BaseFragment implements UserView {
 
         progressDialog = new ProgressDialog(getActivity());
 
-
+        hideProgress();
     }
 
     @Override
     protected void initInject() {
-
         mFragmentComponent.inject(this);
+    }
+
+    @Override
+    protected void showErrorMessage(String errorMsg, boolean pullToRefresh) {
+
     }
 
 
@@ -187,30 +193,46 @@ public class UserFragment extends BaseFragment implements UserView {
 
     }
 
+    private static final int PER_REQUEST_CODE = 1;
+
     private void uploadPhoto() {
 
-        if (TextUtils.isEmpty(filePath)) {
-            ToastUtil.showToast("请先点击头像选择图片");
-            return;
-        }
-        progressDialog.setMessage("上传中...");
-        progressDialog.show();
-        mUserPresnter.upLoadImage(new File(filePath));
+        requestPermissions(getResources().getString(R.string.permission_desc), new String[]{Manifest.permission.READ_SMS, Manifest.permission.CALL_PHONE}
+                , PER_REQUEST_CODE, new PermissionsResultListener() {
+                    @Override
+                    public void onPermissionGranted() {
+
+                        ToastUtil.showToast("已申请权限");
+
+                        if (TextUtils.isEmpty(filePath)) {
+                            ToastUtil.showToast("请先点击头像选择图片");
+                            return;
+                        }
+                        progressDialog.setMessage("上传中...");
+                        progressDialog.show();
+                        mUserPresnter.upLoadImage(new File(filePath));
+
+                    }
+
+                    @Override
+                    public void onPermissionDenied() {
+                        ToastUtil.showToast("拒绝申请权限");
+                    }
+                });
+
     }
 
-    @Override
-    public void showProgress() {
-
-    }
 
     @Override
     public void hideProgress() {
+        super.hideProgress();
         progressDialog.dismiss();
     }
 
+
     @Override
-    public void showErrorMsg(String errorMsg) {
-        ToastUtil.showToast(errorMsg);
+    public void loadData(boolean pullToRefresh) {
+
     }
 
     @Override

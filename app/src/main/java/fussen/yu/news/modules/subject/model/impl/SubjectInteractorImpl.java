@@ -4,14 +4,14 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
+import example.fussen.baselibrary.callback.RequestCallBack;
+import example.fussen.baselibrary.utils.LogUtil;
+import fussen.yu.news.App;
 import fussen.yu.news.modules.subject.bean.WeekEvent;
 import fussen.yu.news.modules.subject.model.SubjectInteractor;
 import fussen.yu.news.utils.network.NetConfig;
 import fussen.yu.news.utils.network.NetworkUtils;
-import fussen.yu.news.utils.network.callback.RequestCallBack;
 import fussen.yu.news.utils.network.callback.ResponseCallBack;
-import example.fussen.baselibrary.utils.LogUtil;
-import fussen.yu.news.App;
 import rx.Subscription;
 
 /**
@@ -45,6 +45,7 @@ public class SubjectInteractorImpl implements SubjectInteractor<WeekEvent> {
             @Override
             public void onError(Throwable e) {
                 LogUtil.fussenLog().d("1008611" + "========onError========" + e.getMessage());
+                callBack.onError(e.getMessage(), false);
             }
 
             @Override

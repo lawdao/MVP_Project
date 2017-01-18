@@ -44,7 +44,17 @@
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="SportTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <item name="android:colorBackground">@color/transparent</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+
+    </style>
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light">
+        <item name="colorPrimary">@color/colorPrimary</item>
+
+    </style>
 
 
     <!-- ToolBar菜单样式 -->
@@ -72,6 +82,18 @@
         <item name="android:layout_centerInParent">true</item>
         <item name="android:textColor">#333333</item>
         <item name="android:gravity">center_horizontal</item>
+    </style>
+
+
+    <style name="ToolbarCenterTitle">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
+    <style name="ToolbarRightText">
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textSize">16sp</item>
     </style>
 
 </resources>

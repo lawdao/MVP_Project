@@ -2,7 +2,7 @@ package fussen.yu.news.modules.subject.presenter;
 
 import java.util.Map;
 
-import fussen.yu.news.base.presenter.PresenterLife;
+import example.fussen.baselibrary.base.presenter.PresenterLife;
 
 
 /**
@@ -14,5 +14,5 @@ import fussen.yu.news.base.presenter.PresenterLife;
  */
 
 public interface SujectPresenter extends PresenterLife {
-    void getSubject(Map<String, String> params);
+    void getSubject(Map<String, String> params , boolean pullToRefresh);
 }

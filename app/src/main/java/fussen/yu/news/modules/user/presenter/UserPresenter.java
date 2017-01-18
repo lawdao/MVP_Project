@@ -2,7 +2,7 @@ package fussen.yu.news.modules.user.presenter;
 
 import java.io.File;
 
-import fussen.yu.news.base.presenter.PresenterLife;
+import example.fussen.baselibrary.base.presenter.PresenterLife;
 
 /**
  * Created by Fussen on 2016/12/28.

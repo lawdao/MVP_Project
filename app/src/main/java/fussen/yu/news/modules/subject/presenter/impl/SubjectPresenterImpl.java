@@ -5,11 +5,12 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
-import fussen.yu.news.base.presenter.BasePresenter;
-import fussen.yu.news.modules.subject.presenter.SujectPresenter;
+import example.fussen.baselibrary.base.presenter.BasePresenter;
+import example.fussen.baselibrary.callback.RequestCallBack;
 import fussen.yu.news.modules.subject.bean.WeekEvent;
 import fussen.yu.news.modules.subject.model.SubjectInteractor;
 import fussen.yu.news.modules.subject.model.impl.SubjectInteractorImpl;
+import fussen.yu.news.modules.subject.presenter.SujectPresenter;
 import fussen.yu.news.modules.subject.view.SubjectView;
 
 /**
@@ -18,7 +19,7 @@ import fussen.yu.news.modules.subject.view.SubjectView;
  * 当presenter创建的时候，此时model层也应该随之被创建，可以准备获取数据
  */
 
-public class SubjectPresenterImpl extends BasePresenter<SubjectView, WeekEvent> implements SujectPresenter {
+public class SubjectPresenterImpl extends BasePresenter<SubjectView, WeekEvent> implements SujectPresenter, RequestCallBack<WeekEvent> {
 
     private SubjectInteractor<WeekEvent> mSubjectInteractor;
 
@@ -41,7 +42,8 @@ public class SubjectPresenterImpl extends BasePresenter<SubjectView, WeekEvent> 
     @Override
     public void onSuccess(WeekEvent data) {
         super.onSuccess(data);
-        getView().refreshView(data);
+        if (isViewAttached())
+            getView().refreshView(data);
     }
 
 
@@ -49,14 +51,24 @@ public class SubjectPresenterImpl extends BasePresenter<SubjectView, WeekEvent> 
      * 访问网络失败回调
      *
      * @param errorMsg
+     * @param pullToRefresh
      */
     @Override
-    public void onError(String errorMsg) {
-        super.onError(errorMsg);
+    public void onError(String errorMsg, boolean pullToRefresh) {
+        super.onError(errorMsg, pullToRefresh);
     }
 
+
+    /**
+     * 正式访问网络 展示加载对话框
+     * @param params
+     * @param pullToRefresh
+     */
     @Override
-    public void getSubject(Map<String, String> params) {
+    public void getSubject(Map<String, String> params, boolean pullToRefresh) {
+
+        getView().showProgress(pullToRefresh);
+
         mSubscription = mSubjectInteractor.getSubject(params, this);
     }
 }

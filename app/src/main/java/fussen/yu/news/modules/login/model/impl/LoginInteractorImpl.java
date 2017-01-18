@@ -4,6 +4,7 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
+import example.fussen.baselibrary.callback.RequestCallBack;
 import example.fussen.baselibrary.utils.LogUtil;
 import example.fussen.baselibrary.utils.TransformUtils;
 import fussen.yu.news.User;
@@ -13,7 +14,6 @@ import fussen.yu.news.utils.PreferUtils;
 import fussen.yu.news.utils.db.DbUtils;
 import fussen.yu.news.utils.network.NetConfig;
 import fussen.yu.news.utils.network.NetworkUtils;
-import fussen.yu.news.utils.network.callback.RequestCallBack;
 import rx.Subscriber;
 import rx.Subscription;
 import rx.functions.Action1;
@@ -73,7 +73,7 @@ public class LoginInteractorImpl implements LoginInteractor<UserInfo> {
                     @Override
                     public void onError(Throwable e) {
                         LogUtil.fussenLog().d("1008611" + "=====onError====" + e.getMessage());
-                        callBack.onError(e.getMessage());
+                        callBack.onError(e.getMessage(), false);
                         PreferUtils.getInstance().setAppIsLogin(false);
                     }
 
