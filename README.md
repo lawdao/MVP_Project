@@ -68,6 +68,10 @@ mvp 案例
 #最后说明
 1. 该项目只能用于学习，请勿做其他用处
 2. 如果有时间我会分章节解析用到的技术
-3. 扫描下面二维码即可关注AppCode公共号
-4. 测试账号：18219200511，密码：000000
+3. 测试账号：18219200511，密码：000000
+4. [点击下载apk](http://dl.download.csdn.net/down11/20170208/c42bfba45414972c0e3aaeca413b29b8.apk?response-content-disposition=attachment%3Bfilename%3D%22app-debug.apk%22&OSSAccessKeyId=9q6nvzoJGowBj4q1&Expires=1486541859&Signature=Z5JEV468GP4vAMkf1OPPkUGIPKc%3D)
+
+5. 扫描下面二维码即可关注AppCode公共号
+
+
 ![](http://ww1.sinaimg.cn/large/65e4f1e6gw1f9btkbltksj2076076aaj.jpg)
