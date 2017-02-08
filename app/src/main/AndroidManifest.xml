@@ -12,8 +12,6 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.PERSISTENT_ACTIVITY" />
-    <uses-permission android:name="android.permission.READ_SMS" />
-    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
@@ -53,7 +51,7 @@
             android:name=".modules.login.activity.LoginActivity"
             android:theme="@style/LoginTheme" />
         <activity android:name=".modules.login.activity.HomeActivity"
-            android:launchMode="singleInstance"
+            android:launchMode="singleTask"
             />
         <activity android:name=".modules.sport.activity.SportActivity"></activity>
     </application>

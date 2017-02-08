@@ -1,5 +1,6 @@
 package fussen.yu.news.base.activity;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -59,6 +60,8 @@ public abstract class BaseActivity<P extends PresenterLife> extends AppCompatAct
     protected ImageView iv_back;
     protected TextView title;
     protected TextView tv_right;
+
+    private static final int PER_REQUEST_CODE = 1;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -132,7 +135,20 @@ public abstract class BaseActivity<P extends PresenterLife> extends AppCompatAct
                 public boolean onNavigationItemSelected(MenuItem item) {
                     switch (item.getItemId()) {
                         case R.id.sport:
-                            mClass = SportActivity.class;
+                            requestPermissions(getResources().getString(R.string.permission_desc), new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}
+                                    , PER_REQUEST_CODE, new PermissionsResultListener() {
+                                        @Override
+                                        public void onPermissionGranted() {
+                                            mClass = SportActivity.class;
+                                        }
+
+                                        @Override
+                                        public void onPermissionDenied() {
+                                            ToastUtil.showToast("拒绝申请权限");
+                                        }
+                                    });
+
+
                             break;
                         case R.id.nav_photo:
                             ToastUtil.showToast("裸照");

@@ -4,6 +4,7 @@ package fussen.yu.news.modules.sport.activity;
 import android.content.Context;
 import android.database.ContentObserver;
 import android.graphics.Color;
+import android.location.Criteria;
 import android.location.GpsSatellite;
 import android.location.GpsStatus;
 import android.location.LocationManager;
@@ -86,6 +87,10 @@ public class SportActivity extends BaseActivity implements LocationSource, AMapL
     TextView title;
     @BindView(R.id.btn_start)
     TextView btnStart;
+    @BindView(R.id.already_satellite)
+    TextView already_satellite;
+    @BindView(R.id.all_satellite)
+    TextView all_satellite;
 
 
     private AMap aMap;
@@ -597,7 +602,30 @@ public class SportActivity extends BaseActivity implements LocationSource, AMapL
         if (locationManager == null) {
             locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         }
+
+        //获取最佳位置定位方式
+        locationManager.getBestProvider(createFineCriteria(), true);
         locationManager.addGpsStatusListener(gpsStatusListener);
+
+    }
+
+    public Criteria createFineCriteria() {
+
+        Criteria c = new Criteria();
+
+        c.setAccuracy(Criteria.ACCURACY_FINE);//高精度
+
+        c.setAltitudeRequired(true);//包含高度信息
+
+        c.setBearingRequired(true);//包含方位信息
+
+        c.setSpeedRequired(true);//包含速度信息
+
+        c.setCostAllowed(true);//允许付费
+
+        c.setPowerRequirement(Criteria.POWER_HIGH);//高耗电
+
+        return c;
     }
 
     private void unregisterGPSListener() {
@@ -658,6 +686,7 @@ public class SportActivity extends BaseActivity implements LocationSource, AMapL
 
                     List<GpsSatellite> satelliteList = new ArrayList<>();
                     int count = 0;
+                    int allCount = 0;
                     int maxSatellites = gpsStatus.getMaxSatellites();//获取卫星颗数的默认最大值
                     while (satelliteIterator.hasNext() && count <= maxSatellites) {
                         GpsSatellite satellite = satelliteIterator.next();
@@ -666,8 +695,41 @@ public class SportActivity extends BaseActivity implements LocationSource, AMapL
                             count++;
                             satelliteList.add(satellite);
                         }
+
+                        allCount++;
+                    }
+
+
+                    //输出卫星信息
+                    for (int i = 0; i < satelliteList.size(); i++) {
+
+                        //卫星的方位角，浮点型数据
+                        LogUtil.fussenLog().d(TAG + "=====卫星的方位角=====" + satelliteList.get(i).getAzimuth());
+
+                        //卫星的高度，浮点型数据
+                        System.out.println(satelliteList.get(i).getElevation());
+
+                        LogUtil.fussenLog().d(TAG + "=====卫星的高度=====" + satelliteList.get(i).getElevation());
+
+                        //卫星的伪随机噪声码，整形数据
+                        LogUtil.fussenLog().d(TAG + "=====卫星的伪随机噪声码=====" + satelliteList.get(i).getPrn());
+
+                        //卫星的信噪比，浮点型数据
+                        LogUtil.fussenLog().d(TAG + "=====卫星的信噪比=====" + satelliteList.get(i).getSnr());
+
+                        //卫星是否有年历表，布尔型数据
+                        LogUtil.fussenLog().d(TAG + "=====卫星是否有年历表=====" + satelliteList.get(i).hasAlmanac());
+
+                        //卫星是否有星历表，布尔型数据
+                        LogUtil.fussenLog().d(TAG + "=====卫星是否有星历表=====" + satelliteList.get(i).hasEphemeris());
+
+                        //卫星是否被用于近期的GPS修正计算
+                        LogUtil.fussenLog().d(TAG + "=====卫星是否被用于近期的GPS修正计算=====" + satelliteList.get(i).hasAlmanac());
                     }
                     satelliteCount = count;
+
+                    already_satellite.setText("使用中卫星:" + satelliteCount);
+                    all_satellite.setText("已搜到卫星:" + allCount);
 
                     LogUtil.fussenLog().d(TAG + "===卫星状态改变=====已定位卫星数======" + satelliteCount);
                     gpsChange();
@@ -782,6 +844,9 @@ public class SportActivity extends BaseActivity implements LocationSource, AMapL
     private float priorPointDistance = 0;
 
 
+    /**
+     * GPS最少需4颗卫星来实现精确定位
+     */
     private void gpsChange() {
 
         if (satelliteCount == 0) {

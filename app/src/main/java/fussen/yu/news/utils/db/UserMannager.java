@@ -68,7 +68,7 @@ public class UserMannager extends BaseDao<User> {
         int size = Users.size();
         if (size > 0) {
             for (int i = 0; i < size; i++) {
-                ids.add(Users.get(i).getId());
+                ids.add(Users.get(i).getUserID());
             }
             return ids;
         } else {

@@ -210,4 +210,10 @@ public class HomeActivity extends BaseActivity implements Toolbar.OnMenuItemClic
     public boolean onMenuItemClick(MenuItem item) {
         return false;
     }
+
+
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
+    }
 }

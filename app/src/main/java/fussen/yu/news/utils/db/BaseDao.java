@@ -189,7 +189,7 @@ public class BaseDao<T>{
      */
     public boolean isExitObject(long id,Class object){
         QueryBuilder<T> qb = (QueryBuilder<T>) daoSession.getDao(object).queryBuilder();
-        qb.where(UserDao.Properties.Id.eq(id));
+        qb.where(UserDao.Properties.Uid.eq(id));
         long length = qb.buildCount().count();
         return length>0 ? true:false;
     }

@@ -17,9 +17,10 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import example.fussen.baselibrary.utils.BitmapCompressUtil;
 import example.fussen.baselibrary.utils.BitmapUtils;
 import example.fussen.baselibrary.utils.LogUtil;
+import example.fussen.baselibrary.utils.image.ImageUtils;
+import example.fussen.baselibrary.utils.image.OnCompressListener;
 import example.fussen.baselibrary.widget.CircleImageView;
 import example.fussen.baselibrary.widget.dialog.GlobalDialog;
 import fussen.yu.news.R;
@@ -128,11 +129,23 @@ public class UserFragment extends BaseFragment implements UserView {
     }
 
     private void openPhonePhoto() {
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        intent.addCategory(Intent.CATEGORY_OPENABLE);
-        startActivityForResult(intent, TAKE_PHOTO_ALBUM);
+
+        requestPermissions(getResources().getString(R.string.permission_desc), new String[]{Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE}
+                , PER_REQUEST_CODE, new PermissionsResultListener() {
+                    @Override
+                    public void onPermissionGranted() {
+                        Intent intent = new Intent();
+                        intent.setType("image/*");
+                        intent.setAction(Intent.ACTION_GET_CONTENT);
+                        intent.addCategory(Intent.CATEGORY_OPENABLE);
+                        startActivityForResult(intent, TAKE_PHOTO_ALBUM);
+                    }
+
+                    @Override
+                    public void onPermissionDenied() {
+                        ToastUtil.showToast("拒绝申请权限");
+                    }
+                });
 
     }
 
@@ -147,34 +160,41 @@ public class UserFragment extends BaseFragment implements UserView {
 
                     String path = selectedUri.getPath();
 
-                    LogUtil.fussenLog().d("1008611" + "===selectedUri.getPath()=====" + path);
                     try {
-
                         File file = BitmapUtils.saveUriToFile(UiUtils.getContext(), selectedUri);
+                        LogUtil.fussenLog().d("1008611" + "===selectedUri.getPath()=====" + path);
 
+                        ImageUtils.get(UiUtils.getContext())
+                                .load(file)
+                                .setCompressListener(new OnCompressListener() {
+                                    @Override
+                                    public void onStart() {
 
-                        filePath = file.getAbsolutePath();
-                        BitmapCompressUtil compressUtil = new BitmapCompressUtil(UiUtils.getContext());
+                                    }
 
-                        compressUtil.bitmapCompress(filePath, new BitmapCompressUtil.BitmapCompressCallback() {
-                            @Override
-                            public void onCompressSuccess(String fileOutputPath) {
-                                ToastUtil.showToast("压缩成功");
-                            }
+                                    @Override
+                                    public void onSuccess(File file) {
+                                        filePath = file.getAbsolutePath();
+                                        LogUtil.fussenLog().d("1008611" + "=====压缩后路径======" + file.getAbsolutePath());
+                                        ToastUtil.showToast("压缩成功");
+                                    }
 
-                            @Override
-                            public void onCompressFailure(String t) {
-                                ToastUtil.showToast(t);
-                            }
-                        });
+                                    @Override
+                                    public void onError(Throwable e) {
+
+                                    }
+                                }).launch();
+
 
                         Glide.with(this)
                                 .load(selectedUri)
                                 .into(userHead);
-
                     } catch (Exception e) {
                         e.printStackTrace();
+
                     }
+
+
                 } else {
                     ToastUtil.showToast("无法选择该图片");
                 }
@@ -197,29 +217,13 @@ public class UserFragment extends BaseFragment implements UserView {
 
     private void uploadPhoto() {
 
-        requestPermissions(getResources().getString(R.string.permission_desc), new String[]{Manifest.permission.READ_SMS, Manifest.permission.CALL_PHONE}
-                , PER_REQUEST_CODE, new PermissionsResultListener() {
-                    @Override
-                    public void onPermissionGranted() {
-
-                        ToastUtil.showToast("已申请权限");
-
-                        if (TextUtils.isEmpty(filePath)) {
-                            ToastUtil.showToast("请先点击头像选择图片");
-                            return;
-                        }
-                        progressDialog.setMessage("上传中...");
-                        progressDialog.show();
-                        mUserPresnter.upLoadImage(new File(filePath));
-
-                    }
-
-                    @Override
-                    public void onPermissionDenied() {
-                        ToastUtil.showToast("拒绝申请权限");
-                    }
-                });
-
+        if (TextUtils.isEmpty(filePath)) {
+            ToastUtil.showToast("请先点击头像选择图片");
+            return;
+        }
+        progressDialog.setMessage("上传中...");
+        progressDialog.show();
+        mUserPresnter.upLoadImage(new File(filePath));
     }
 
 
@@ -242,7 +246,7 @@ public class UserFragment extends BaseFragment implements UserView {
 
     @Override
     public void downLoadImageSucce(String path) {
-        ToastUtil.showToast("图片已保存在" + path + "目录下");
+        ToastUtil.showToast("视频已保存在" + path + "目录下");
     }
 
     @Override

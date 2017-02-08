@@ -166,4 +166,8 @@ public class App extends Application {
         return mDaoSession.getUserDao();
     }
 
+    public static SportDao getSportDao() {
+        return mDaoSession.getSportDao();
+    }
+
 }

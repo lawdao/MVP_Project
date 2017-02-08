@@ -1,1 +1,1 @@
-include ':app', ':baselibrary', ':subjectmodule', ':daogenerator'
+include ':app', ':baselibrary', ':daogenerator'

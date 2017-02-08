@@ -15,7 +15,7 @@ public class DbUtils {
     public static boolean isExit(String id) {
         QueryBuilder<User> query = App.getUserDao().queryBuilder();
 
-        query.where(UserDao.Properties.Id.eq(id));
+        query.where(UserDao.Properties.Uid.eq(id));
 
         long count = query.buildCount().count();
 
@@ -45,7 +45,7 @@ public class DbUtils {
         }
         QueryBuilder<User> query = App.getUserDao().queryBuilder();
 
-        query.where(UserDao.Properties.Id.eq(id));
+        query.where(UserDao.Properties.Uid.eq(id));
         return query.unique();
     }
 

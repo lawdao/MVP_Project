@@ -54,7 +54,7 @@ public class LoginInteractorImpl implements LoginInteractor<UserInfo> {
                     @Override
                     public void call(UserInfo info) {
                         User user = new User();
-                        user.setId(Long.parseLong(info.userId));
+                        user.setUid(info.userId);
                         user.setNickName(info.nickName);
                         user.setAvatarUrl(info.avatarUrl);
                         user.setGender(info.gender);

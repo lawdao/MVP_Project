@@ -3,8 +3,6 @@ package fussen.yu.news.utils.network;
 import android.content.Context;
 import android.util.Log;
 
-import com.tamic.novate.util.Utils;
-
 import java.io.File;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
