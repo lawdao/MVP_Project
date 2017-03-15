@@ -68,10 +68,10 @@ mvp 案例
 1. 该项目只能用于学习，请勿做其他用处
 2. [点击下载apk](http://download.csdn.net/detail/fussenyu/9749919)
 3. 如果有时间我会分章节解析用到的技术
-4. 扫描下面二维码即可关注AppCode公共号
-5. 测试账号：18219200511，密码：000000
-6. 个人博客：[闭嘴吧](http://fussen.cc)
-7. 微信公共号：AppCode
+4. 测试账号：18219200511，密码：000000
+5. 个人博客：[闭嘴吧](http://fussen.cc)
+6. 微信公共号：AppCode
+7. 扫描下面二维码即可关注AppCode公共号
 
 
 ![](http://ww1.sinaimg.cn/large/65e4f1e6gw1f9btkbltksj2076076aaj.jpg)
