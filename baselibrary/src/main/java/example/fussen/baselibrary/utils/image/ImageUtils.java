@@ -86,7 +86,7 @@ public class ImageUtils {
     }
 
     public static ImageUtils get(Context context) {
-        if (INSTANCE == null) INSTANCE = new ImageUtils(ImageUtils.getPhotoCacheDir(context));
+        if (INSTANCE == null) INSTANCE = new ImageUtils(getPhotoCacheDir(context));
         return INSTANCE;
     }
 

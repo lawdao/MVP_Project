@@ -158,14 +158,14 @@ public class UserFragment extends BaseFragment implements UserView {
                 final Uri selectedUri = data.getData();
                 if (selectedUri != null) {
 
-                    String path = selectedUri.getPath();
+
+                    String path = BitmapUtils.getPath(UiUtils.getContext(), selectedUri);
 
                     try {
-                        File file = BitmapUtils.saveUriToFile(UiUtils.getContext(), selectedUri);
                         LogUtil.fussenLog().d("1008611" + "===selectedUri.getPath()=====" + path);
 
                         ImageUtils.get(UiUtils.getContext())
-                                .load(file)
+                                .load(new File(path))
                                 .setCompressListener(new OnCompressListener() {
                                     @Override
                                     public void onStart() {

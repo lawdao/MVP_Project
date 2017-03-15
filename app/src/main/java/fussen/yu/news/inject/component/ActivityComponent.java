@@ -30,7 +30,6 @@ public interface ActivityComponent {
     Activity getActivity();
 
     void inject(HomeActivity homeActivity);
-
     void inject(LoginActivity loginActivity);
     void inject(SportActivity sportActivity);
 }
