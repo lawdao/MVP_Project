@@ -23,8 +23,8 @@ mvp 案例
  2. 上传文件
  3. 下载文件
  4. 仿咕咚户外运动
- 
- 
+
+
 #你能学到什么
  > 细节技术
 
@@ -45,17 +45,17 @@ mvp 案例
 #功能展示
 
  1. 户外运动
- 
+
  ![](https://ww4.sinaimg.cn/large/006tNc79gy1fcj015ubg4g30970ge48e.gif)
- 
+
  2. 下载文件
- 
+
   ![](https://ww3.sinaimg.cn/large/006tNc79gy1fcj0qt7213g30970gb771.gif)
- 
+
  3. 上传文件
- 
+
    ![]( https://ww1.sinaimg.cn/large/006tNc79gy1fcj0r63zrtg30970gbtbg.gif)
- 
+
  4. 自动登录
 
   ![]( https://ww1.sinaimg.cn/large/006tNc79gy1fcj0rxlbang30970gbtbu.gif)
@@ -66,9 +66,12 @@ mvp 案例
 
 #最后说明
 1. 该项目只能用于学习，请勿做其他用处
-2. 如果有时间我会分章节解析用到的技术
-3. 关注微信公共号：AppCode
+2. [点击下载apk](http://download.csdn.net/detail/fussenyu/9749919)
+3. 如果有时间我会分章节解析用到的技术
 4. 扫描下面二维码即可关注AppCode公共号
 5. 测试账号：18219200511，密码：000000
+6. 个人博客：[闭嘴吧](http://fussen.cc)
+7. 微信公共号：AppCode
+
 
 ![](http://ww1.sinaimg.cn/large/65e4f1e6gw1f9btkbltksj2076076aaj.jpg)
