@@ -14,8 +14,6 @@ mvp 案例
  7. 软件架构：MVP
 
 
-#项目预览
-![](https://ww1.sinaimg.cn/large/006tNc79gy1fcivtxbse3g30970gehdt.gif)
 
 #实现的功能
 
@@ -42,36 +40,3 @@ mvp 案例
 12. 卡路里的计算
 
 
-#功能展示
-
- 1. 户外运动
-
- ![](https://ww4.sinaimg.cn/large/006tNc79gy1fcj015ubg4g30970ge48e.gif)
-
- 2. 下载文件
-
-  ![](https://ww3.sinaimg.cn/large/006tNc79gy1fcj0qt7213g30970gb771.gif)
-
- 3. 上传文件
-
-   ![]( https://ww1.sinaimg.cn/large/006tNc79gy1fcj0r63zrtg30970gbtbg.gif)
-
- 4. 自动登录
-
-  ![]( https://ww1.sinaimg.cn/large/006tNc79gy1fcj0rxlbang30970gbtbu.gif)
-
- 5. 压缩图片
-
- ![](https://ww2.sinaimg.cn/large/006tNc79gy1fcj0541pt8g30970gbq8k.gif)
-
-#最后说明
-1. 该项目只能用于学习，请勿做其他用处
-2. [点击下载apk](http://download.csdn.net/detail/fussenyu/9749919)
-3. 如果有时间我会分章节解析用到的技术
-4. 测试账号：18219200511，密码：000000
-5. 个人博客：[闭嘴吧](http://fussen.cc)
-6. 微信公共号：AppCode
-7. 扫描下面二维码即可关注AppCode公共号
-
-
-![](http://ww1.sinaimg.cn/large/65e4f1e6gw1f9btkbltksj2076076aaj.jpg)
